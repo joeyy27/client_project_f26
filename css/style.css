@@ -1,11 +1,10 @@
-/* ELO client project - Deliverable #2 (mobile first)
-   CITATIONS: Drafted with Claude (Anthropic), October 2026, from the prompt
-   "rework my style.css with a navy header, maize accents and the UM brand look."
-   Skip link + reduced-motion pattern adapted from HW3 starter_style.css.
-   Look inspired by the UM Brand Office site (brand.umich.edu).
-   Colors: UM Maize #FFCB05 and UM Blue #00274C (verify against UM Brand Guidelines).
-   No media queries here except prefers-reduced-motion (accessibility), per the assignment. */
+/* ELO client project - Deliverable #2 
+   CSS drafted with Claude, October 2026. " Why is my Skip link and reduced-motion
+   pattern isn't working? Can you help me find the issue?" Please see if any was adapted from my HW3 */
 
+/* I also used labels on each section to help me identify the sections in the HTML and CSS. */
+
+/* Colors */
 :root {
   --blue: #00274c;
   --maize: #ffcb05;
@@ -18,22 +17,21 @@
 body {
   background: var(--gray);
   color: var(--ink);
-  font-family: "Helvetica Neue", Arial, sans-serif; /* swap for the UM brand fonts */
+  font-family: "Helvetica Neue", Arial, sans-serif;
   font-size: 1.125rem;
   line-height: 1.6;
   overflow-wrap: break-word;
 }
 
-/* ---------- Typography ---------- */
+/* Typography */
 h1 { font-size: 1.5rem; line-height: 1.2; font-weight: 800; }
 h2 { font-size: 1.5rem; line-height: 1.3; color: var(--blue); font-weight: 700; }
 h3 { font-size: 1.25rem; line-height: 1.3; color: var(--blue); font-weight: 700; }
-p, li { max-width: 65ch; }
 
 a { color: var(--blue); text-decoration: underline; text-underline-offset: 0.2em; }
 a:hover { background: var(--maize); }
 
-/* Visible focus on light and dark backgrounds (blue ring + maize halo) */
+/* Focus */
 :focus-visible {
   outline: 0.2rem solid var(--blue);
   outline-offset: 0.15rem;
@@ -43,7 +41,7 @@ header :focus-visible, footer :focus-visible, aside :focus-visible {
   outline-color: var(--paper);
 }
 
-/* ---------- Skip link (add class="skip" to the link in every page) ---------- */
+/* Skip link */
 .skip {
   position: absolute;
   left: 0;
@@ -55,8 +53,9 @@ header :focus-visible, footer :focus-visible, aside :focus-visible {
   transition: top 0.3s ease-out;
 }
 .skip:focus { top: 0; }
+.skip:focus-visible { outline-color: var(--blue); }
 
-/* ---------- Header: navy bar, logo and title share a row, nav below ---------- */
+/* Header */
 header {
   display: grid;
   grid-template-columns: 6rem 1fr;
@@ -74,12 +73,12 @@ header img { grid-area: logo; width: 100%; height: auto; display: block; }
 header h1 { grid-area: title; color: var(--maize); }
 header nav {
   grid-area: nav;
-  background: #ddd;          /* light bar like the HW3 nav */
-  margin: 0 -4vw;            /* run edge to edge inside the padded header */
+  background: #ddd;
+  margin: 0 -4vw;
   padding: 0.5rem 4vw;
 }
 
-/* Text for screen readers only (the menu button says "Menu: <page>" to them) */
+/* Screen reader only */
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -92,7 +91,7 @@ header nav {
   border: 0;
 }
 
-/* ---------- Navigation: hamburger menu built with <details>/<summary> (no JavaScript) ---------- */
+/* Navigation */
 nav summary {
   display: flex;
   align-items: center;
@@ -112,7 +111,6 @@ nav summary {
 }
 nav summary::-webkit-details-marker { display: none; }
 
-/* Hamburger icon on the right: three bars drawn with gradients in one box */
 nav summary::after {
   content: "";
   flex: none;
@@ -125,7 +123,6 @@ nav summary::after {
 }
 nav details[open] summary { background: var(--blue); color: var(--paper); }
 
-/* Open menu: full-width stacked rows with dividers */
 nav ul {
   display: grid;
   grid-template-columns: 1fr;
@@ -146,42 +143,44 @@ nav a {
   color: var(--blue);
   border: 0.15rem solid transparent;
 }
-/* Hover: dotted border, same idea as HW3 */
+
 nav a:hover { background: transparent; border: 0.15rem dotted var(--blue); }
 
-/* Current page: filled blue row with white text (not color alone, no underline) */
 nav a[aria-current="page"] {
   background: var(--blue);
   color: var(--paper);
 }
 nav a[aria-current="page"]:hover { background: var(--blue); border-color: var(--maize); }
 
-/* Focus ring must show on the light bar */
 header nav :focus-visible { outline-color: var(--blue); }
 
-/* ---------- Main content ---------- */
-main {
-  display: grid;
-  gap: 1.5rem;
-  padding: 1.5rem 4vw 2rem;
-}
+/* Main content */
+main { display: grid; }
+main > section { padding: 2rem 4vw; }
 main section { display: grid; gap: 1rem; align-content: start; }
 main ul, main ol { padding-left: 1.5rem; }
 main li { margin-bottom: 0.5rem; }
 
-main img { display: block; max-width: 100%; height: auto; border-radius: 0.25rem; }
+main img { display: block; width: 100%; max-width: 100%; height: auto; border-radius: 0.25rem; }
 iframe { width: 100%; height: 52vw; border: 0; }
 
-/* Maize band opens every page */
-main > section:first-child {
-  background: var(--maize);
-  color: var(--blue);
-  padding: 1.5rem;
-  border-radius: 0.25rem;
-}
+main > section:first-child { background: var(--maize); color: var(--blue); }
 main > section:first-child a:hover { background: var(--blue); color: var(--maize); }
+main > section:first-child article { border-top-color: var(--blue); }
+main > section:nth-child(even) { background: var(--gray); }
+main > section:nth-child(odd):not(:first-child) { background: var(--paper); }
 
-/* Cards (nested articles) */
+main > section:nth-child(odd):not(:first-child) article { background: var(--gray); }
+main > section:nth-child(odd):not(:first-child) article .tiles > li { background: var(--paper); }
+
+/* Hero */
+main > section.hero { background: var(--blue); color: var(--paper); padding-top: 2.5rem; padding-bottom: 2.5rem; }
+.hero h2 { font-size: 2rem; line-height: 1.1; color: var(--paper); }
+.hero p { color: #e3e9f0; }
+.hero :focus-visible { outline-color: var(--paper); }
+main > section.hero .button:hover { background: var(--paper); color: var(--blue); }
+
+/* Cards */
 article {
   background: var(--paper);
   border-top: 0.4rem solid var(--maize);
@@ -191,16 +190,81 @@ article {
   align-content: start;
 }
 
-/* Add class="cards" to the home page sections that hold several articles */
-/* Cards stack as full-width horizontal rows */
 .cards {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
 }
 
-/* Tiles: fluid multi-column Grid, no media query needed.
-   Use class="tiles" on a section (cards) or on a ul (list items). */
+/* Numbered stages */
+.steps { counter-reset: step; }
+.steps article {
+  counter-increment: step;
+  display: grid;
+  grid-template-columns: 2.5rem 1fr;
+  column-gap: 1rem;
+  row-gap: 0.5rem;
+  padding: 1.25rem 0;
+  background: transparent;
+  border-top: 1px solid var(--line);
+}
+.steps article:last-of-type { border-bottom: 1px solid var(--line); }
+.steps article > * { grid-column: 2; }
+.steps article::before {
+  content: counter(step);
+  grid-column: 1;
+  grid-row: 1 / span 3;
+  align-self: start;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: var(--blue);
+  color: var(--maize);
+  font-size: 1rem;
+  font-weight: 800;
+}
+main > section.steps:nth-child(n):not(:first-child) article { background: transparent; }
+
+/* Questions */
+.questions { list-style: none; padding: 0; counter-reset: q; }
+.questions > li {
+  counter-increment: q;
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  column-gap: 0.75rem;
+  align-items: start;
+  max-width: none;
+  margin: 0;
+  padding: 0.75rem 0;
+  border-top: 1px solid var(--line);
+}
+.questions > li:last-child { border-bottom: 1px solid var(--line); }
+.questions > li::before {
+  content: counter(q);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--blue);
+  color: var(--maize);
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+/* Tiles */
+.tiles > article > img {
+  width: calc(100% + 2rem);
+  max-width: none;
+  height: auto;
+  margin: -1rem -1rem 0;
+  border-radius: 0;
+}
+
 .tiles {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
@@ -208,6 +272,10 @@ article {
   font-size: 1rem;
 }
 .tiles > h2, .tiles > p { grid-column: 1 / -1; }
+
+.tiles-3 {
+  grid-template-columns: repeat(auto-fit, minmax(max(9rem, calc((100% - 2rem) / 3)), 1fr));
+}
 .tiles h3 { font-size: 1.1rem; }
 ul.tiles { list-style: none; padding: 0; }
 .tiles > li {
@@ -218,17 +286,16 @@ ul.tiles { list-style: none; padding: 0; }
   padding: 1rem;
 }
 .tiles > li strong { display: block; color: var(--blue); margin-bottom: 0.25rem; }
-/* tiles nested inside a white card use a gray fill so they stand out */
+
 article .tiles > li { background: var(--gray); border-top-width: 0.25rem; }
 
 article > a { font-weight: 700; padding: 0.5rem 0; }
 
-/* Aside (newsletter) */
+/* Newsletter */
 aside {
   background: var(--blue);
   color: var(--paper);
-  padding: 1.25rem;
-  border-radius: 0.25rem;
+  padding: 2rem 4vw;
   display: grid;
   gap: 0.75rem;
 }
@@ -236,7 +303,8 @@ aside h2 { color: var(--maize); }
 aside a { color: var(--maize); font-weight: 700; }
 aside a:hover { background: var(--maize); color: var(--blue); }
 
-/* Newsletter sign-up link styled as a full-width maize button with an arrow */
+/* Button */
+.button,
 aside > div > a {
   display: flex;
   align-items: center;
@@ -250,6 +318,7 @@ aside > div > a {
   text-decoration: none;
   border-radius: 0.25rem;
 }
+.button::after,
 aside > div > a::after {
   content: "";
   flex: none;
@@ -259,31 +328,41 @@ aside > div > a::after {
   border-right: 0.2rem solid currentColor;
   transform: rotate(45deg);
 }
+.button:hover,
 aside > div > a:hover { background: var(--paper); color: var(--blue); }
 
-/* ---------- Table (wrap in <div class="table-wrap" tabindex="0" role="region" aria-label="Featured resources">) ---------- */
+/* Table */
 .table-wrap { overflow-x: auto; background: var(--paper); }
 table { width: 100%; min-width: 34rem; }
 caption { text-align: left; font-weight: 700; padding: 0.75rem; }
 th, td { text-align: left; vertical-align: top; padding: 0.75rem; border-bottom: 1px solid var(--line); }
 thead th { background: var(--blue); color: var(--paper); }
 
-/* ---------- Footer ---------- */
+/* Footer */
 footer {
   display: grid;
-  gap: 0.75rem;
-  justify-items: center;
-  text-align: center;
+  gap: 1.5rem;
   background: var(--blue);
   color: var(--paper);
-  padding: 1.5rem 4vw;
+  padding: 2rem 4vw;
   border-top: 0.4rem solid var(--maize);
+}
+footer p { margin: 0; }
+.footer-title { font-size: 1.125rem; font-weight: 800; color: var(--paper); margin-bottom: 0.5rem; }
+
+.footer-links ul {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0 1rem;
+  list-style: none;
+  padding: 0;
 }
 footer a { color: var(--maize); display: inline-block; padding: 0.5rem 0; }
 footer a:hover { background: var(--maize); color: var(--blue); }
-address { font-style: normal; }
+address { font-style: normal; padding-top: 0.5rem; }
+.footer-copy { border-top: 1px solid rgba(255, 255, 255, 0.35); padding-top: 1rem; font-size: 1rem; }
 
-/* ---------- Accessibility: reduced motion ---------- */
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .skip { transition: none; }
