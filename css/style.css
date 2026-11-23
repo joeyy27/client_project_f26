@@ -846,3 +846,35 @@ footer {
         padding-right: 5vw;
     }
 }
+
+/*404 layout new fixes*/
+
+main > section.hero.not-found {
+    background: var(--gray);
+    color: var(--ink);
+}
+
+main > section.hero.not-found .not-found-content h2 {
+    color: var(--blue);
+}
+
+main > section.hero.not-found .not-found-content p {
+    color: var(--ink);
+}
+
+main > section.hero.not-found .not-found-content .button {
+    margin-top: 1.5rem;
+}
+
+main > aside {
+    background: var(--blue);
+    color: var(--paper);
+}
+
+main > aside h2 {
+    color: var(--maize);
+}
+
+main > aside p {
+    color: var(--paper);
+}
