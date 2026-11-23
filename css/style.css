@@ -1,3 +1,4 @@
+
 /* ELO client project - Deliverable #2
    CSS drafted with Claude, October 2026. " Why is my Skip link and reduced-motion
    pattern isn't working? Can you help me find the issue?" Please see if any was adapted from my HW3 */
@@ -373,6 +374,25 @@ thead th { background: var(--blue); color: var(--paper); }
 
 .error-code { display: none; }
 
+.phase-banner {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+}
+
+main > section.why {
+  background:
+    linear-gradient(rgba(236, 236, 236, 0.9), rgba(236, 236, 236, 0.9)),
+    url("../images/UMSI_Orientation_2026_11.jpg") center / cover no-repeat;
+}
+
+main > section.featured-programs {
+  background:
+    linear-gradient(rgba(236, 236, 236, 0.92), rgba(236, 236, 236, 0.92)),
+    url("../images/MCOMMONS-EarlySummerViewsMay2026-19.jpg") center / cover no-repeat;
+}
+
 /* Footer */
 footer {
   display: grid;
@@ -395,7 +415,13 @@ footer p { margin: 0; }
 footer a { color: var(--maize); display: inline-block; padding: 0.5rem 0; }
 footer a:hover { background: var(--maize); color: var(--blue); }
 address { font-style: normal; padding-top: 0.5rem; }
-.footer-copy { border-top: 1px solid rgba(255, 255, 255, 0.35); padding-top: 1rem; font-size: 1rem; }
+.footer-copy {
+  grid-column: 1 / -1;
+  width: 100%;
+  border-top: 1px solid rgba(255, 255, 255, 0.35);
+  padding-top: 1rem;
+  font-size: 1rem;
+}
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
@@ -452,15 +478,31 @@ address { font-style: normal; padding-top: 0.5rem; }
   .context > h2 { grid-column: 1; grid-row: 1 / span 2; }
   .context > p { grid-column: 2; }
 
-  .phase { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .phase > h2, .phase > p, .phase > .wide { grid-column: 1 / -1; }
-  .phase > img { width: 100%; height: 100%; object-fit: cover; }
-  .split { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 2rem; align-items: start; }
-  .split > h3, .split > ul { grid-column: 1; }
-  .split > img { grid-column: 2; grid-row: 1 / span 2; }
+  .phase { grid-template-columns: minmax(0, 1fr); row-gap: 0; }
+  .phase > h2 { margin-bottom: 1rem; }
+  .phase > p { margin-bottom: 2rem; }
+  main > section.phase article,
+  main > section.phase:nth-child(odd):not(:first-child) article {
+    padding: 2.5rem 0;
+    background: transparent;
+    border-top: 1px solid var(--line);
+    box-shadow: none;
+  }
+  main > section.phase article:last-of-type { border-bottom: 1px solid var(--line); }
+  main > section.phase:nth-child(odd):not(:first-child) article.wide {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: var(--gray);
+    border-top: 0.4rem solid var(--maize);
+    box-shadow: 0 0.25rem 1rem rgba(0, 39, 76, 0.1);
+  }
 
-  .intro > img, .why > img, .phase > img, .split > img { border-radius: 0.5rem; box-shadow: 0 0.75rem 2rem rgba(0, 39, 76, 0.25); }
-  .phase article, .tiles-3 > article, ul.tiles > li { box-shadow: 0 0.25rem 1rem rgba(0, 39, 76, 0.1); }
+  .phase article > img { max-height: 24rem; object-fit: cover; }
+
+  .intro > img, .why > img, .phase article > img { border-radius: 0.5rem; box-shadow: 0 0.75rem 2rem rgba(0, 39, 76, 0.25); }
+  .tiles-3 > article, ul.tiles > li { box-shadow: 0 0.25rem 1rem rgba(0, 39, 76, 0.1); }
 
   aside { grid-template-columns: 1fr auto; column-gap: 3rem; align-items: center; }
   aside > * { grid-column: 1; }
@@ -486,11 +528,23 @@ address { font-style: normal; padding-top: 0.5rem; }
 
   nav summary { display: none; }
   header nav { padding-top: 0; padding-bottom: 0; background: var(--paper); }
-  nav ul { display: flex; flex-wrap: wrap; justify-content: center; margin-top: 0; background: transparent; border: 0; }
+  nav ul {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.25rem;
+    max-width: 70rem;
+    margin: 0 auto;
+    background: transparent;
+    border: 0;
+  }
   nav li { border: 0; }
   nav a {
+    box-sizing: border-box;
+    width: 100%;
     min-height: 3.5rem;
-    padding: 0 1.1rem;
+    justify-content: center;
+    text-align: center;
+    padding: 0 0.5rem;
     border: 0;
     border-bottom: 0.35rem solid transparent;
   }
@@ -537,4 +591,49 @@ address { font-style: normal; padding-top: 0.5rem; }
   .tiles-3 > article { position: relative; }
   .tiles-3 h3 a::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; left: 0; }
   .tiles-3 > article:hover { box-shadow: 0 0.5rem 1.5rem rgba(0, 39, 76, 0.25); }
+
+  .phase article { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 0 3rem; }
+  .phase article > h3 { grid-column: 1; grid-row: 1 / span 6; align-self: start; position: sticky; top: 1.5rem; }
+  .phase article > :not(h3) { grid-column: 2; margin-bottom: 1rem; }
+  .phase article > :not(h3):last-child { margin-bottom: 0; }
+
+  .phase > .phase-banner {
+    grid-column: 1 / -1;
+    width: 100%;
+    max-height: 24rem;
+    object-fit: cover;
+    margin-bottom: 2rem;
+    box-shadow: 0 0.75rem 2rem rgba(0, 39, 76, 0.25);
+  }
+
+  main > section.phase article.wide {
+    grid-template-columns: 1fr;
+  }
+  .phase article.wide > h3,
+  .phase article.wide > :not(h3) {
+    grid-column: 1;
+    grid-row: auto;
+    position: static;
+    margin-bottom: 0;
+  }
+
+  .prep-phase { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
+  .prep-phase > h2, .prep-phase > p, .prep-phase > .phase-banner,
+  .prep-phase > article:not(.prep-card) { grid-column: 1 / -1; }
+  main > section.phase.prep-phase article.prep-card {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: var(--gray);
+    border-top: 0.4rem solid var(--maize);
+    box-shadow: 0 0.25rem 1rem rgba(0, 39, 76, 0.1);
+  }
+  .prep-phase article.prep-card > h3,
+  .prep-phase article.prep-card > :not(h3) {
+    grid-column: 1;
+    grid-row: auto;
+    position: static;
+    margin-bottom: 0;
+  }
 }
