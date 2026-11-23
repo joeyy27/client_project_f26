@@ -748,3 +748,101 @@ address { font-style: normal; padding-top: 0.5rem; }
     margin-bottom: 0;
   }
 }
+
+main > section.hero.not-found {
+  background: var(--gray);
+  color: var(--ink);
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: 2rem;
+}
+
+.not-found-content {
+  display: grid;
+  gap: 1.5rem;
+  align-content: center;
+}
+
+main > section.hero.not-found .not-found-content h2 {
+  color: var(--blue);
+}
+
+main > section.hero.not-found .not-found-content p {
+  color: var(--ink);
+  max-width: 65ch;
+}
+
+main > section.hero.not-found .not-found-content .button {
+  justify-self: start;
+  width: auto;
+}
+
+main > section.hero.not-found > .not-found-photo {
+  grid-column: 1;
+  grid-row: auto;
+  width: 100%;
+  height: auto;
+  max-height: none;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 39, 76, 0.15);
+}
+
+@media (min-width: 48rem) {
+  main > section.hero.not-found {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  main > section.hero.not-found > .not-found-photo {
+    grid-column: 2;
+    grid-row: 1;
+  }
+}
+
+@media (min-width: 64rem) {
+  main > section.hero.not-found {
+    grid-template-columns: 1fr 1.2fr;
+    gap: 3rem;
+  }
+}
+
+/*fixing footer for all view, move it here to make it easier for me*/
+
+footer {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.footer-links,
+.footer-contact {
+    padding-left: 4vw;
+    padding-right: 4vw;
+}
+
+.footer-copy {
+    grid-column: 1 / -1;
+    width: 100%;
+    box-sizing: border-box;
+    border-top: 1px solid rgba(255, 255, 255, 0.35);
+    padding: 1rem 4vw 0;
+}
+
+@media (min-width: 48rem) {
+    footer {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .footer-links,
+    .footer-contact {
+        padding-left: 5vw;
+        padding-right: 5vw;
+    }
+
+    .footer-copy {
+        padding-left: 5vw;
+        padding-right: 5vw;
+    }
+}
