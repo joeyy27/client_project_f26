@@ -1,4 +1,3 @@
-
 /* ELO client project - Deliverable #2
    CSS drafted with Claude, October 2026. " Why is my Skip link and reduced-motion
    pattern isn't working? Can you help me find the issue?" Please see if any was adapted from my HW3 */
@@ -264,10 +263,10 @@ main > section.steps:nth-child(n):not(:first-child) article { background: transp
 
 /* Tiles */
 .tiles > article > img {
-  width: calc(100% + 2rem);
-  max-width: none;
+  width: 100%;
+  max-width: 100%;
   height: auto;
-  margin: -1rem -1rem 0;
+  margin: 0;
   border-radius: 0;
 }
 
@@ -280,7 +279,7 @@ main > section.steps:nth-child(n):not(:first-child) article { background: transp
 .tiles > h2, .tiles > p { grid-column: 1 / -1; }
 
 .tiles-3 {
-  grid-template-columns: repeat(auto-fit, minmax(max(9rem, calc((100% - 2rem) / 3)), 1fr));
+  grid-template-columns: 1fr;
 }
 .tiles h3 { font-size: 1.1rem; }
 ul.tiles { list-style: none; padding: 0; }
@@ -372,7 +371,16 @@ thead th { background: var(--blue); color: var(--paper); }
 .filter input:focus-visible { outline: 0.25rem solid var(--blue); outline-offset: 0.1rem; box-shadow: none; }
 .filter p { font-size: 1rem; }
 
-.error-code { display: none; }
+.error-code {
+  display: block;
+  font-size: 5rem;
+  font-weight: 800;
+  line-height: 1;
+  text-align: center;
+  color: var(--maize);
+}
+.not-found { text-align: center; }
+.not-found .button { justify-self: center; }
 
 .phase-banner {
   width: 100%;
@@ -391,6 +399,56 @@ main > section.featured-programs {
   background:
     linear-gradient(rgba(236, 236, 236, 0.92), rgba(236, 236, 236, 0.92)),
     url("../images/MCOMMONS-EarlySummerViewsMay2026-19.jpg") center / cover no-repeat;
+}
+
+main > section.phase article,
+main > section.phase:nth-child(odd):not(:first-child) article {
+  padding: 1.5rem 0;
+  background: transparent;
+  border-top: 1px solid var(--line);
+  box-shadow: none;
+}
+
+main > section.phase article:last-of-type {
+  border-bottom: 1px solid var(--line);
+}
+
+main > section.phase.prep-phase article.prep-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: var(--gray);
+  border-top: 0.4rem solid var(--maize);
+  box-shadow: 0 0.25rem 1rem rgba(0, 39, 76, 0.1);
+}
+
+main > section.phase:nth-child(odd):not(:first-child) article.wide,
+main > section.phase article.wide {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: var(--gray);
+  border-top: 0.4rem solid var(--maize);
+  box-shadow: 0 0.25rem 1rem rgba(0, 39, 76, 0.1);
+}
+
+main > section.steps:nth-child(n):not(:first-child) article {
+  grid-template-columns: 1fr;
+  padding: 1.5rem;
+  background: var(--paper);
+  border-top: 0.4rem solid var(--maize);
+  border-bottom: 0;
+  box-shadow: 0 0.25rem 1rem rgba(0, 39, 76, 0.1);
+}
+
+.steps article > * { grid-column: 1; }
+.steps article::before { grid-row: auto; }
+
+.tiles-3 > article,
+ul.tiles > li {
+  box-shadow: 0 0.25rem 1rem rgba(0, 39, 76, 0.1);
 }
 
 /* Footer */
@@ -415,13 +473,7 @@ footer p { margin: 0; }
 footer a { color: var(--maize); display: inline-block; padding: 0.5rem 0; }
 footer a:hover { background: var(--maize); color: var(--blue); }
 address { font-style: normal; padding-top: 0.5rem; }
-.footer-copy {
-  grid-column: 1 / -1;
-  width: 100%;
-  border-top: 1px solid rgba(255, 255, 255, 0.35);
-  padding-top: 1rem;
-  font-size: 1rem;
-}
+.footer-copy { border-top: 1px solid rgba(255, 255, 255, 0.35); padding-top: 1rem; font-size: 1rem; }
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
@@ -431,14 +483,14 @@ address { font-style: normal; padding-top: 0.5rem; }
 
 @media (min-width: 48rem) {
 
-  :root { --gutter: max(5vw, calc((100vw - 72rem) / 2)); }
+  :root { --gutter: 5vw; }
 
   h1 { font-size: 1.875rem; }
   h2 { font-size: 1.75rem; }
   h3 { font-size: 1.375rem; }
 
   header { grid-template-columns: 8rem 1fr; column-gap: 2rem; padding-left: var(--gutter); padding-right: var(--gutter); }
-  header nav { margin-left: calc(var(--gutter) * -1); margin-right: calc(var(--gutter) * -1); padding-left: var(--gutter); padding-right: var(--gutter); }
+  header nav { margin-left: -5vw; margin-right: -5vw; padding-left: var(--gutter); padding-right: var(--gutter); }
   footer, aside { padding-left: var(--gutter); padding-right: var(--gutter); }
   aside { padding-top: 3rem; padding-bottom: 3rem; }
 
@@ -463,7 +515,7 @@ address { font-style: normal; padding-top: 0.5rem; }
   .why > img { grid-column: 2; grid-row: 1 / span 2; }
   .why > .tiles { grid-column: 1 / -1; }
   ul.tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
-  .stages ul.tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .stages ul.tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
   .tiles-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
 
@@ -516,6 +568,78 @@ address { font-style: normal; padding-top: 0.5rem; }
 
   footer { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 3rem; }
   .footer-copy { grid-column: 1 / -1; }
+
+  .hero:not(.not-found) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 2rem;
+  }
+  .hero:not(.not-found) > h2,
+  .hero:not(.not-found) > p,
+  .hero:not(.not-found) > .button { grid-column: 1 / -1; }
+  .hero:not(.not-found) > iframe {
+    grid-column: 1 / -1;
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+  .hero.not-found {
+    text-align: left;
+    grid-template-columns: 3fr 2fr;
+    column-gap: 2rem;
+    align-items: center;
+  }
+  .hero.not-found > h2,
+  .hero.not-found > p:not(.error-code),
+  .hero.not-found > .button { grid-column: 1; }
+  .hero.not-found > .button { justify-self: start; }
+  .hero.not-found > .error-code {
+    display: block;
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    max-width: none;
+    font-size: 7rem;
+    font-weight: 800;
+    line-height: 1;
+    text-align: center;
+    color: var(--maize);
+  }
+  .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 2rem; }
+  .steps > h2, .steps > p { grid-column: 1 / -1; }
+  .steps article:last-of-type { grid-column: 1 / -1; }
+  .phase > .phase-banner {
+    grid-column: 1 / -1;
+    max-height: 20rem;
+    object-fit: cover;
+    margin-bottom: 1.5rem;
+  }
+  .phase article:not(.wide):not(.prep-card) {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    gap: 0 2rem;
+  }
+  .phase article:not(.wide):not(.prep-card) > h3 { grid-column: 1; grid-row: 1 / span 8; }
+  .phase article:not(.wide):not(.prep-card) > :not(h3) { grid-column: 2; margin-bottom: 1rem; }
+  .phase article:not(.wide):not(.prep-card) > :not(h3):last-child { margin-bottom: 0; }
+  .prep-phase { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 1.5rem; row-gap: 1.5rem; }
+  .prep-phase > h2, .prep-phase > p, .prep-phase > .phase-banner,
+  .prep-phase > article:not(.prep-card) { grid-column: 1 / -1; }
+  main > section.phase.prep-phase article.prep-card {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: var(--gray);
+    border-top: 0.4rem solid var(--maize);
+    box-shadow: 0 0.25rem 1rem rgba(0, 39, 76, 0.1);
+  }
+  .prep-phase article.prep-card > h3,
+  .prep-phase article.prep-card > :not(h3) {
+    grid-column: 1;
+    grid-row: auto;
+    position: static;
+    margin-bottom: 0;
+  }
+  .phase article.wide > h3,
+  .phase article.wide > :not(h3) { grid-column: 1; grid-row: auto; }
+
 }
 
 @media (min-width: 64rem) {
@@ -574,6 +698,8 @@ address { font-style: normal; padding-top: 0.5rem; }
   }
 
   .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
+  .steps article:last-of-type { grid-column: auto; }
+  .stages ul.tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .steps > h2, .steps > p { grid-column: 1 / -1; }
   main > section.steps:nth-child(n):not(:first-child) article {
     grid-template-columns: 1fr;
