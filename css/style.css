@@ -402,10 +402,6 @@ main > section.phase:nth-child(odd):not(:first-child) article {
   box-shadow: none;
 }
 
-main > section.phase article:last-of-type {
-  border-bottom: 1px solid var(--line);
-}
-
 main > section.phase.prep-phase article.prep-card {
   display: grid;
   grid-template-columns: 1fr;
@@ -533,7 +529,6 @@ address { font-style: normal; padding-top: 0.5rem; }
     border-top: 1px solid var(--line);
     box-shadow: none;
   }
-  main > section.phase article:last-of-type { border-bottom: 1px solid var(--line); }
   main > section.phase:nth-child(odd):not(:first-child) article.wide {
     display: grid;
     grid-template-columns: 1fr;
@@ -705,6 +700,9 @@ address { font-style: normal; padding-top: 0.5rem; }
 
   .phase article { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 0 3rem; }
   .phase article > h3 { grid-column: 1; grid-row: 1 / span 6; align-self: start; position: sticky; top: 1.5rem; }
+/* Sticky headings created with help from UMGPT using the prompt,
+   "Can you show me again how to make a section headings stay visible while I scroll down the page? Like this webiste here, just a example works because I do want to learn. I some websites also do this too I thought it was a cool accessibility feature and I want to understand how you can do it"
+   UMGPT. (2026). UMGPT (GPT-5.6, November 22, 2026 version) [Large language model]. */
   .phase article > :not(h3) { grid-column: 2; margin-bottom: 1rem; }
   .phase article > :not(h3):last-child { margin-bottom: 0; }
 

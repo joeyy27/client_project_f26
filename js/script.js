@@ -49,3 +49,8 @@ if (filterInput && clearButton && filterStatus) {
     filterInput.focus();
   });
 }
+
+/* Footer year, desktop menu, and resource search created with help from UMGPT using the prompt,
+   "Can you teach me how to make my footer display the current year, set up a desktop navigation menu,
+   and add a resource search feature using JavaScript? I'm still learning js so it's hard for me to code that. you may also list any resources that I can look."
+   UMGPT. (2026). UMGPT (GPT-5.6, November 21, 2026 version) [Large language model]. */
