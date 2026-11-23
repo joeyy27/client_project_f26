@@ -876,3 +876,13 @@ main > aside h2 {
 main > aside p {
     color: var(--paper);
 }
+
+/* Note: this stylesheet is long (about 800 lines) because I built the
+  the view in stages and tested each layout change on every page as I went.
+   Some rules appear more than once (the .prep-card, .wide card, .not-found
+   hero, and footer styles) becausee I tried to fixed the current ones but it seems liek its not doing 
+   the fixes so I rewrite the code again so it will overrides the code I had previously. 
+   (which is my later fixes sit near the bottom. I kept those overrides in place
+   instead of merging them so I would not accidentally break a layout that was already
+   working) Merging the duplicates is something I would clean up in
+   a future revision if needed*/
