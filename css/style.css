@@ -371,16 +371,9 @@ thead th { background: var(--blue); color: var(--paper); }
 .filter input:focus-visible { outline: 0.25rem solid var(--blue); outline-offset: 0.1rem; box-shadow: none; }
 .filter p { font-size: 1rem; }
 
-.error-code {
-  display: block;
-  font-size: 5rem;
-  font-weight: 800;
-  line-height: 1;
-  text-align: center;
-  color: var(--maize);
-}
-.not-found { text-align: center; }
-.not-found .button { justify-self: center; }
+.not-found { text-align: left; }
+.not-found .button { justify-self: start; }
+.not-found-photo { width: 100%; height: auto; border-radius: 0.5rem; }
 
 .phase-banner {
   width: 100%;
@@ -588,19 +581,14 @@ address { font-style: normal; padding-top: 0.5rem; }
     align-items: center;
   }
   .hero.not-found > h2,
-  .hero.not-found > p:not(.error-code),
+  .hero.not-found > p,
   .hero.not-found > .button { grid-column: 1; }
-  .hero.not-found > .button { justify-self: start; }
-  .hero.not-found > .error-code {
-    display: block;
+  .hero.not-found > .not-found-photo {
     grid-column: 2;
-    grid-row: 1 / span 3;
-    max-width: none;
-    font-size: 7rem;
-    font-weight: 800;
-    line-height: 1;
-    text-align: center;
-    color: var(--maize);
+    grid-row: 1 / span 4;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
   .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 2rem; }
   .steps > h2, .steps > p { grid-column: 1 / -1; }
@@ -682,19 +670,16 @@ address { font-style: normal; padding-top: 0.5rem; }
   main > section.hero { padding-top: 4.5rem; padding-bottom: 4.5rem; }
   .hero { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 4rem; align-content: center; align-items: center; }
   .hero > h2, .hero > p, .hero > .button { grid-column: 1; }
-  .hero > iframe, .hero > .error-code { grid-column: 2; grid-row: 1 / span 3; }
+  .hero > iframe { grid-column: 2; grid-row: 1 / span 3; }
   .hero h2 { font-size: 3rem; }
   .hero > .button { justify-self: start; min-width: 18rem; }
   iframe { height: auto; aspect-ratio: 16 / 9; }
-
-  .hero .error-code {
-    display: block;
-    max-width: none;
-    font-size: clamp(7rem, 16vw, 13rem);
-    font-weight: 800;
-    line-height: 1;
-    text-align: center;
-    color: var(--maize);
+  .hero.not-found > .not-found-photo {
+    grid-column: 2;
+    grid-row: 1 / span 4;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
