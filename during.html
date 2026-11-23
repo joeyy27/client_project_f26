@@ -6,6 +6,7 @@
     <title>During Your Experience | UMSI</title>
     <link rel="stylesheet" href="css/html5reset.css">
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
 </head>
 <body>
 
@@ -28,23 +29,23 @@
 
 <main id="main">
 
-<section>
+<section class="intro">
   <h2>Master Adaptive Project Management</h2>
   <p>Master the art of adaptive project management, human-centered fieldwork, and constructive feedback as you execute your project in real time.</p>
   <img src="images/UMSI_ASBChineseAmericanMuseumChicago_2026_19.jpg" alt="Two students review a diagram together while working on a field project." width="500" height="333">
 </section>
 
-<section>
+<section class="context">
   <h2>The Value of Navigating Friction & Active Execution</h2>
   <p>The middle of an engaged learning project is where real growth happens—and where real challenges surface. Real-world projects rarely follow a straight line. Requirements shift, team dynamics evolve, clients face unexpected internal constraints, and research data yields surprising results.</p>
   <p>The true value of this phase lies in developing resilience, adaptability, and ethical agility. Learning to manage "scope creep," navigate mid-project feedback, and re-align technical decisions with human needs are the exact experiences that distinguish top UMSI graduates. When you view friction not as a barrier, but as a natural part of the applied learning process, you develop the strategic problem-solving skills needed in modern information careers.</p>
 </section>
 
-<section>
+<section class="phase">
   <h2>Phase 3: Managing & Executing in the Field</h2>
   <p>Conducting research, tracking progress, and maintaining clear communication with project sponsors.</p>
 
-  <article>
+  <article class="wide split">
     <h3>Focus & Objectives</h3>
     <ul>
       <li><strong>Fieldwork & Research Methods:</strong> Apply human-centered design tools to observe contexts and extract insights.</li>
@@ -54,10 +55,18 @@
     <img src="images/UMSI_ASBChineseAmericanMuseumChicago_2026_03.jpg" alt="A student team gathers around archival materials to work through a project problem together" width="500" height="333">
   </article>
 
-  <article>
-    <h3>Featured Resources & Handouts</h3>
+  <article class="wide">
+    <h3>Featured Resources &amp; Handouts</h3>
+    <div class="filter">
+      <label for="resource-filter">Search the resources by name, category, or purpose</label>
+      <div class="filter-row">
+        <input type="search" id="resource-filter" name="resource-filter" autocomplete="off" aria-controls="resource-table">
+        <button type="button" id="clear-filter">Clear search</button>
+      </div>
+      <p id="filter-status" role="status">Showing all 7 resources.</p>
+    </div>
     <div class="table-wrap" tabindex="0" role="region" aria-label="Featured resources and handouts">
-    <table>
+    <table id="resource-table">
       <caption>Featured resources and handouts for the active phase</caption>
       <thead>
         <tr>
@@ -129,7 +138,7 @@
       <p>Email: <a href="mailto:umsi.engagement@umich.edu">umsi.engagement@umich.edu</a></p>
     </address>
   </div>
-  <p class="footer-copy">&copy; 2026 Regents of the University of Michigan</p>
+  <p class="footer-copy">&copy; <span id="year">2026</span> Regents of the University of Michigan</p>
 </footer>
 
 </body>

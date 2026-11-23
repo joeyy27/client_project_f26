@@ -1,4 +1,4 @@
-/* ELO client project - Deliverable #2 
+/* ELO client project - Deliverable #2
    CSS drafted with Claude, October 2026. " Why is my Skip link and reduced-motion
    pattern isn't working? Can you help me find the issue?" Please see if any was adapted from my HW3 */
 
@@ -149,6 +149,11 @@ nav a:hover { background: transparent; border: 0.15rem dotted var(--blue); }
 nav a[aria-current="page"] {
   background: var(--blue);
   color: var(--paper);
+
+  border-left: 0.5rem solid var(--maize);
+  text-decoration: underline;
+  text-decoration-thickness: 0.15rem;
+  text-underline-offset: 0.3em;
 }
 nav a[aria-current="page"]:hover { background: var(--blue); border-color: var(--maize); }
 
@@ -338,6 +343,36 @@ caption { text-align: left; font-weight: 700; padding: 0.75rem; }
 th, td { text-align: left; vertical-align: top; padding: 0.75rem; border-bottom: 1px solid var(--line); }
 thead th { background: var(--blue); color: var(--paper); }
 
+.filter { display: grid; gap: 0.5rem; padding: 0.75rem; background: var(--gray); border-left: 0.4rem solid var(--blue); }
+.filter label { font-weight: 700; color: var(--blue); }
+.filter-row { display: grid; grid-template-columns: 1fr auto; gap: 0.5rem; }
+.filter input {
+  min-height: 3rem;
+  min-width: 0;
+  padding: 0 0.75rem;
+  font: inherit;
+  color: var(--ink);
+  background: var(--paper);
+  border: 0.15rem solid var(--blue);
+  border-radius: 0.25rem;
+}
+.filter button {
+  min-height: 3rem;
+  padding: 0 1rem;
+  font: inherit;
+  font-weight: 700;
+  color: var(--paper);
+  background: var(--blue);
+  border: 0.15rem solid var(--blue);
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+.filter button:hover { background: var(--maize); color: var(--blue); }
+.filter input:focus-visible { outline: 0.25rem solid var(--blue); outline-offset: 0.1rem; box-shadow: none; }
+.filter p { font-size: 1rem; }
+
+.error-code { display: none; }
+
 /* Footer */
 footer {
   display: grid;
@@ -366,4 +401,140 @@ address { font-style: normal; padding-top: 0.5rem; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .skip { transition: none; }
+}
+
+@media (min-width: 48rem) {
+
+  :root { --gutter: max(5vw, calc((100vw - 72rem) / 2)); }
+
+  h1 { font-size: 1.875rem; }
+  h2 { font-size: 1.75rem; }
+  h3 { font-size: 1.375rem; }
+
+  header { grid-template-columns: 8rem 1fr; column-gap: 2rem; padding-left: var(--gutter); padding-right: var(--gutter); }
+  header nav { margin-left: calc(var(--gutter) * -1); margin-right: calc(var(--gutter) * -1); padding-left: var(--gutter); padding-right: var(--gutter); }
+  footer, aside { padding-left: var(--gutter); padding-right: var(--gutter); }
+  aside { padding-top: 3rem; padding-bottom: 3rem; }
+
+  main > section { padding-top: 3rem; padding-bottom: 3rem; padding-left: var(--gutter); padding-right: var(--gutter); }
+  main > section.hero { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+  main section { gap: 1.5rem; }
+  main section > p, main article > p, aside > p { max-width: 70ch; }
+
+  main h2::after {
+    content: "";
+    display: block;
+    width: 3.5rem;
+    height: 0.3rem;
+    margin-top: 0.6rem;
+    background: var(--maize);
+  }
+  main > section:first-child h2::after { background: var(--blue); }
+  main > section.hero h2::after { background: var(--maize); }
+
+  .why { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 3rem; align-items: center; }
+  .why > h2, .why > p { grid-column: 1; }
+  .why > img { grid-column: 2; grid-row: 1 / span 2; }
+  .why > .tiles { grid-column: 1 / -1; }
+  ul.tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
+  .stages ul.tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+  .tiles-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
+
+  .about { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 3rem; }
+  .about > h2 { grid-column: 1 / -1; }
+
+  .intro { grid-template-columns: 3fr 2fr; column-gap: 3rem; align-items: center; }
+  .intro > h2, .intro > p { grid-column: 1; }
+  .intro > img { grid-column: 2; grid-row: 1 / span 3; }
+
+  .context { grid-template-columns: 1fr 2fr; column-gap: 3rem; }
+  .context > h2 { grid-column: 1; grid-row: 1 / span 2; }
+  .context > p { grid-column: 2; }
+
+  .phase { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .phase > h2, .phase > p, .phase > .wide { grid-column: 1 / -1; }
+  .phase > img { width: 100%; height: 100%; object-fit: cover; }
+  .split { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 2rem; align-items: start; }
+  .split > h3, .split > ul { grid-column: 1; }
+  .split > img { grid-column: 2; grid-row: 1 / span 2; }
+
+  .intro > img, .why > img, .phase > img, .split > img { border-radius: 0.5rem; box-shadow: 0 0.75rem 2rem rgba(0, 39, 76, 0.25); }
+  .phase article, .tiles-3 > article, ul.tiles > li { box-shadow: 0 0.25rem 1rem rgba(0, 39, 76, 0.1); }
+
+  aside { grid-template-columns: 1fr auto; column-gap: 3rem; align-items: center; }
+  aside > * { grid-column: 1; }
+  aside > div { grid-column: 2; grid-row: 1 / span 2; }
+  aside > p:last-child { grid-column: 1 / -1; }
+  aside > div > a { min-width: 18rem; }
+
+  .filter-row { max-width: 36rem; }
+  tbody tr:nth-child(even) { background: var(--gray); }
+  tbody td:first-child { font-weight: 700; color: var(--blue); }
+
+  footer { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 3rem; }
+  .footer-copy { grid-column: 1 / -1; }
+}
+
+@media (min-width: 64rem) {
+
+  h1 { font-size: 2.25rem; }
+  h2 { font-size: 2rem; }
+  h3 { font-size: 1.5rem; }
+
+  header { grid-template-columns: 9rem 1fr; padding-top: 1.5rem; }
+
+  nav summary { display: none; }
+  header nav { padding-top: 0; padding-bottom: 0; background: var(--paper); }
+  nav ul { display: flex; flex-wrap: wrap; justify-content: center; margin-top: 0; background: transparent; border: 0; }
+  nav li { border: 0; }
+  nav a {
+    min-height: 3.5rem;
+    padding: 0 1.1rem;
+    border: 0;
+    border-bottom: 0.35rem solid transparent;
+  }
+  nav a:hover { background: transparent; border: 0; border-bottom: 0.35rem solid var(--blue); }
+
+  nav a[aria-current="page"] { border: 0; border-bottom: 0.35rem solid var(--maize); text-decoration: none; }
+  nav a[aria-current="page"]:hover { border: 0; border-bottom: 0.35rem solid var(--maize); }
+
+  main > section { padding-top: 4rem; padding-bottom: 4rem; }
+
+  main > section.hero { padding-top: 4.5rem; padding-bottom: 4.5rem; }
+  .hero { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 4rem; align-content: center; align-items: center; }
+  .hero > h2, .hero > p, .hero > .button { grid-column: 1; }
+  .hero > iframe, .hero > .error-code { grid-column: 2; grid-row: 1 / span 3; }
+  .hero h2 { font-size: 3rem; }
+  .hero > .button { justify-self: start; min-width: 18rem; }
+  iframe { height: auto; aspect-ratio: 16 / 9; }
+
+  .hero .error-code {
+    display: block;
+    max-width: none;
+    font-size: clamp(7rem, 16vw, 13rem);
+    font-weight: 800;
+    line-height: 1;
+    text-align: center;
+    color: var(--maize);
+  }
+
+  .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
+  .steps > h2, .steps > p { grid-column: 1 / -1; }
+  main > section.steps:nth-child(n):not(:first-child) article {
+    grid-template-columns: 1fr;
+    padding: 1.5rem;
+    background: var(--paper);
+    border-top: 0.4rem solid var(--maize);
+    box-shadow: 0 0.25rem 1rem rgba(0, 39, 76, 0.1);
+  }
+  .steps article > * { grid-column: 1; }
+  .steps article::before { grid-row: auto; }
+  .steps article:last-of-type { border-bottom: 0; }
+
+  ul.tiles { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+  .tiles-3 > article { position: relative; }
+  .tiles-3 h3 a::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; left: 0; }
+  .tiles-3 > article:hover { box-shadow: 0 0.5rem 1.5rem rgba(0, 39, 76, 0.25); }
 }
