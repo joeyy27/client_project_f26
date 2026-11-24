@@ -2,7 +2,8 @@
    CSS drafted with Claude, October 2026. " Why is my Skip link and reduced-motion
    pattern isn't working? Can you help me find the issue?" Please see if any was adapted from my HW3 */
 
-/* I also used labels on each section to help me identify the sections in the HTML and CSS. */
+/* I also used labels on each section to help me identify the sections in the HTML and CSS */
+
 
 /* Colors */
 :root {
@@ -13,7 +14,6 @@
   --gray: #ececec;
   --line: #c4cbd4;
 }
-
 body {
   background: var(--gray);
   color: var(--ink);
@@ -23,11 +23,9 @@ body {
   overflow-wrap: break-word;
 }
 
-/* Typography */
 h1 { font-size: 1.5rem; line-height: 1.2; font-weight: 800; }
 h2 { font-size: 1.5rem; line-height: 1.3; color: var(--blue); font-weight: 700; }
 h3 { font-size: 1.25rem; line-height: 1.3; color: var(--blue); font-weight: 700; }
-
 a { color: var(--blue); text-decoration: underline; text-underline-offset: 0.2em; }
 a:hover { background: var(--maize); }
 
@@ -37,9 +35,7 @@ a:hover { background: var(--maize); }
   outline-offset: 0.15rem;
   box-shadow: 0 0 0 0.4rem var(--maize);
 }
-header :focus-visible, footer :focus-visible, aside :focus-visible {
-  outline-color: var(--paper);
-}
+header :focus-visible, footer :focus-visible, aside :focus-visible { outline-color: var(--paper); }
 
 /* Skip link */
 .skip {
@@ -55,7 +51,7 @@ header :focus-visible, footer :focus-visible, aside :focus-visible {
 .skip:focus { top: 0; }
 .skip:focus-visible { outline-color: var(--blue); }
 
-/* Header */
+/* Header (fixed)*/
 header {
   display: grid;
   grid-template-columns: 6rem 1fr;
@@ -78,7 +74,7 @@ header nav {
   padding: 0.5rem 4vw;
 }
 
-/* Screen reader only */
+/* screen reader*/
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -91,7 +87,7 @@ header nav {
   border: 0;
 }
 
-/* Navigation */
+/* Navbar*/
 nav summary {
   display: flex;
   align-items: center;
@@ -110,7 +106,6 @@ nav summary {
   list-style: none;
 }
 nav summary::-webkit-details-marker { display: none; }
-
 nav summary::after {
   content: "";
   flex: none;
@@ -122,7 +117,6 @@ nav summary::after {
     linear-gradient(currentColor, currentColor) bottom / 100% 0.2rem no-repeat;
 }
 nav details[open] summary { background: var(--blue); color: var(--paper); }
-
 nav ul {
   display: grid;
   grid-template-columns: 1fr;
@@ -143,20 +137,16 @@ nav a {
   color: var(--blue);
   border: 0.15rem solid transparent;
 }
-
 nav a:hover { background: transparent; border: 0.15rem dotted var(--blue); }
-
 nav a[aria-current="page"] {
   background: var(--blue);
   color: var(--paper);
-
   border-left: 0.5rem solid var(--maize);
   text-decoration: underline;
   text-decoration-thickness: 0.15rem;
   text-underline-offset: 0.3em;
 }
 nav a[aria-current="page"]:hover { background: var(--blue); border-color: var(--maize); }
-
 header nav :focus-visible { outline-color: var(--blue); }
 
 /* Main content */
@@ -165,16 +155,13 @@ main > section { padding: 2rem 4vw; }
 main section { display: grid; gap: 1rem; align-content: start; }
 main ul, main ol { padding-left: 1.5rem; }
 main li { margin-bottom: 0.5rem; }
-
 main img { display: block; width: 100%; max-width: 100%; height: auto; border-radius: 0.25rem; }
 iframe { width: 100%; height: 52vw; border: 0; }
-
 main > section:first-child { background: var(--maize); color: var(--blue); }
 main > section:first-child a:hover { background: var(--blue); color: var(--maize); }
 main > section:first-child article { border-top-color: var(--blue); }
 main > section:nth-child(even) { background: var(--gray); }
 main > section:nth-child(odd):not(:first-child) { background: var(--paper); }
-
 main > section:nth-child(odd):not(:first-child) article { background: var(--gray); }
 main > section:nth-child(odd):not(:first-child) article .tiles > li { background: var(--paper); }
 
@@ -194,14 +181,9 @@ article {
   gap: 0.75rem;
   align-content: start;
 }
+.cards { display: grid; grid-template-columns: 1fr; gap: 1rem; }
 
-.cards {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
-}
-
-/* Numbered stages */
+/* stages */
 .steps { counter-reset: step; }
 .steps article {
   counter-increment: step;
@@ -261,7 +243,7 @@ main > section.steps:nth-child(n):not(:first-child) article { background: transp
   font-weight: 800;
 }
 
-/* Tiles */
+/* added new titles for better organization also it improves the visual heirarchy*/
 .tiles > article > img {
   width: 100%;
   max-width: 100%;
@@ -269,7 +251,6 @@ main > section.steps:nth-child(n):not(:first-child) article { background: transp
   margin: 0;
   border-radius: 0;
 }
-
 .tiles {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
@@ -277,10 +258,7 @@ main > section.steps:nth-child(n):not(:first-child) article { background: transp
   font-size: 1rem;
 }
 .tiles > h2, .tiles > p { grid-column: 1 / -1; }
-
-.tiles-3 {
-  grid-template-columns: 1fr;
-}
+.tiles-3 { grid-template-columns: 1fr; }
 .tiles h3 { font-size: 1.1rem; }
 ul.tiles { list-style: none; padding: 0; }
 .tiles > li {
@@ -291,12 +269,10 @@ ul.tiles { list-style: none; padding: 0; }
   padding: 1rem;
 }
 .tiles > li strong { display: block; color: var(--blue); margin-bottom: 0.25rem; }
-
 article .tiles > li { background: var(--gray); border-top-width: 0.25rem; }
-
 article > a { font-weight: 700; padding: 0.5rem 0; }
 
-/* Newsletter */
+/* Newsletter (COME BACK TO THIS)*/
 aside {
   background: var(--blue);
   color: var(--paper);
@@ -342,7 +318,6 @@ table { width: 100%; min-width: 34rem; }
 caption { text-align: left; font-weight: 700; padding: 0.75rem; }
 th, td { text-align: left; vertical-align: top; padding: 0.75rem; border-bottom: 1px solid var(--line); }
 thead th { background: var(--blue); color: var(--paper); }
-
 .filter { display: grid; gap: 0.5rem; padding: 0.75rem; background: var(--gray); border-left: 0.4rem solid var(--blue); }
 .filter label { font-weight: 700; color: var(--blue); }
 .filter-row { display: grid; grid-template-columns: 1fr auto; gap: 0.5rem; }
@@ -370,11 +345,9 @@ thead th { background: var(--blue); color: var(--paper); }
 .filter button:hover { background: var(--maize); color: var(--blue); }
 .filter input:focus-visible { outline: 0.25rem solid var(--blue); outline-offset: 0.1rem; box-shadow: none; }
 .filter p { font-size: 1rem; }
-
 .not-found { text-align: left; }
 .not-found .button { justify-self: start; }
 .not-found-photo { width: 100%; height: auto; border-radius: 0.5rem; }
-
 .phase-banner {
   width: 100%;
   max-width: 100%;
@@ -431,27 +404,23 @@ main > section.steps:nth-child(n):not(:first-child) article {
   border-bottom: 0;
   box-shadow: 0 0.25rem 1rem rgba(0, 39, 76, 0.1);
 }
-
 .steps article > * { grid-column: 1; }
 .steps article::before { grid-row: auto; }
-
 .tiles-3 > article,
-ul.tiles > li {
-  box-shadow: 0 0.25rem 1rem rgba(0, 39, 76, 0.1);
-}
+ul.tiles > li { box-shadow: 0 0.25rem 1rem rgba(0, 39, 76, 0.1); }
 
 /* Footer */
+/*fixing footer for all view, I move it here so its easier for me*/
 footer {
   display: grid;
   gap: 1.5rem;
   background: var(--blue);
   color: var(--paper);
-  padding: 2rem 4vw;
+  padding: 2rem 0;
   border-top: 0.4rem solid var(--maize);
 }
 footer p { margin: 0; }
 .footer-title { font-size: 1.125rem; font-weight: 800; color: var(--paper); margin-bottom: 0.5rem; }
-
 .footer-links ul {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -459,10 +428,22 @@ footer p { margin: 0; }
   list-style: none;
   padding: 0;
 }
+.footer-links,
+.footer-contact {
+  padding-left: 4vw;
+  padding-right: 4vw;
+}
 footer a { color: var(--maize); display: inline-block; padding: 0.5rem 0; }
 footer a:hover { background: var(--maize); color: var(--blue); }
 address { font-style: normal; padding-top: 0.5rem; }
-.footer-copy { border-top: 1px solid rgba(255, 255, 255, 0.35); padding-top: 1rem; font-size: 1rem; }
+.footer-copy {
+  grid-column: 1 / -1;
+  width: 100%;
+  box-sizing: border-box;
+  border-top: 1px solid rgba(255, 255, 255, 0.35);
+  padding: 1rem 4vw 0;
+  font-size: 1rem;
+}
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
@@ -471,23 +452,21 @@ address { font-style: normal; padding-top: 0.5rem; }
 }
 
 @media (min-width: 48rem) {
-
   :root { --gutter: 5vw; }
-
   h1 { font-size: 1.875rem; }
   h2 { font-size: 1.75rem; }
   h3 { font-size: 1.375rem; }
-
   header { grid-template-columns: 8rem 1fr; column-gap: 2rem; padding-left: var(--gutter); padding-right: var(--gutter); }
   header nav { margin-left: -5vw; margin-right: -5vw; padding-left: var(--gutter); padding-right: var(--gutter); }
-  footer, aside { padding-left: var(--gutter); padding-right: var(--gutter); }
+  aside { padding-left: var(--gutter); padding-right: var(--gutter); }
+  .footer-links,
+  .footer-contact { padding-left: 5vw; padding-right: 5vw; }
+  .footer-copy { padding-left: 5vw; padding-right: 5vw; }
   aside { padding-top: 3rem; padding-bottom: 3rem; }
-
   main > section { padding-top: 3rem; padding-bottom: 3rem; padding-left: var(--gutter); padding-right: var(--gutter); }
   main > section.hero { padding-top: 3.5rem; padding-bottom: 3.5rem; }
   main section { gap: 1.5rem; }
   main section > p, main article > p, aside > p { max-width: 70ch; }
-
   main h2::after {
     content: "";
     display: block;
@@ -498,27 +477,21 @@ address { font-style: normal; padding-top: 0.5rem; }
   }
   main > section:first-child h2::after { background: var(--blue); }
   main > section.hero h2::after { background: var(--maize); }
-
   .why { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 3rem; align-items: center; }
   .why > h2, .why > p { grid-column: 1; }
   .why > img { grid-column: 2; grid-row: 1 / span 2; }
   .why > .tiles { grid-column: 1 / -1; }
   ul.tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
   .stages ul.tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-
   .tiles-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
-
   .about { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 3rem; }
   .about > h2 { grid-column: 1 / -1; }
-
   .intro { grid-template-columns: 3fr 2fr; column-gap: 3rem; align-items: center; }
   .intro > h2, .intro > p { grid-column: 1; }
   .intro > img { grid-column: 2; grid-row: 1 / span 3; }
-
   .context { grid-template-columns: 1fr 2fr; column-gap: 3rem; }
   .context > h2 { grid-column: 1; grid-row: 1 / span 2; }
   .context > p { grid-column: 2; }
-
   .phase { grid-template-columns: minmax(0, 1fr); row-gap: 0; }
   .phase > h2 { margin-bottom: 1rem; }
   .phase > p { margin-bottom: 2rem; }
@@ -529,46 +502,23 @@ address { font-style: normal; padding-top: 0.5rem; }
     border-top: 1px solid var(--line);
     box-shadow: none;
   }
-  main > section.phase:nth-child(odd):not(:first-child) article.wide {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
-    padding: 1rem;
-    background: var(--gray);
-    border-top: 0.4rem solid var(--maize);
-    box-shadow: 0 0.25rem 1rem rgba(0, 39, 76, 0.1);
-  }
-
   .phase article > img { max-height: 24rem; object-fit: cover; }
-
   .intro > img, .why > img, .phase article > img { border-radius: 0.5rem; box-shadow: 0 0.75rem 2rem rgba(0, 39, 76, 0.25); }
-  .tiles-3 > article, ul.tiles > li { box-shadow: 0 0.25rem 1rem rgba(0, 39, 76, 0.1); }
-
   aside { grid-template-columns: 1fr auto; column-gap: 3rem; align-items: center; }
   aside > * { grid-column: 1; }
   aside > div { grid-column: 2; grid-row: 1 / span 2; }
   aside > p:last-child { grid-column: 1 / -1; }
   aside > div > a { min-width: 18rem; }
-
   .filter-row { max-width: 36rem; }
   tbody tr:nth-child(even) { background: var(--gray); }
   tbody td:first-child { font-weight: 700; color: var(--blue); }
-
   footer { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 3rem; }
   .footer-copy { grid-column: 1 / -1; }
-
-  .hero:not(.not-found) {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: 2rem;
-  }
+  .hero:not(.not-found) { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 2rem; }
   .hero:not(.not-found) > h2,
   .hero:not(.not-found) > p,
   .hero:not(.not-found) > .button { grid-column: 1 / -1; }
-  .hero:not(.not-found) > iframe {
-    grid-column: 1 / -1;
-    height: auto;
-    aspect-ratio: 16 / 9;
-  }
+  .hero:not(.not-found) > iframe { grid-column: 1 / -1; height: auto; aspect-ratio: 16 / 9; }
   .hero.not-found {
     text-align: left;
     grid-template-columns: 3fr 2fr;
@@ -622,17 +572,13 @@ address { font-style: normal; padding-top: 0.5rem; }
   }
   .phase article.wide > h3,
   .phase article.wide > :not(h3) { grid-column: 1; grid-row: auto; }
-
 }
 
 @media (min-width: 64rem) {
-
   h1 { font-size: 2.25rem; }
   h2 { font-size: 2rem; }
   h3 { font-size: 1.5rem; }
-
   header { grid-template-columns: 9rem 1fr; padding-top: 1.5rem; }
-
   nav summary { display: none; }
   header nav { padding-top: 0; padding-bottom: 0; background: var(--paper); }
   nav ul {
@@ -656,12 +602,9 @@ address { font-style: normal; padding-top: 0.5rem; }
     border-bottom: 0.35rem solid transparent;
   }
   nav a:hover { background: transparent; border: 0; border-bottom: 0.35rem solid var(--blue); }
-
   nav a[aria-current="page"] { border: 0; border-bottom: 0.35rem solid var(--maize); text-decoration: none; }
   nav a[aria-current="page"]:hover { border: 0; border-bottom: 0.35rem solid var(--maize); }
-
   main > section { padding-top: 4rem; padding-bottom: 4rem; }
-
   main > section.hero { padding-top: 4.5rem; padding-bottom: 4.5rem; }
   .hero { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 4rem; align-content: center; align-items: center; }
   .hero > h2, .hero > p, .hero > .button { grid-column: 1; }
@@ -676,28 +619,14 @@ address { font-style: normal; padding-top: 0.5rem; }
     height: 100%;
     object-fit: cover;
   }
-
   .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
   .steps article:last-of-type { grid-column: auto; }
   .stages ul.tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .steps > h2, .steps > p { grid-column: 1 / -1; }
-  main > section.steps:nth-child(n):not(:first-child) article {
-    grid-template-columns: 1fr;
-    padding: 1.5rem;
-    background: var(--paper);
-    border-top: 0.4rem solid var(--maize);
-    box-shadow: 0 0.25rem 1rem rgba(0, 39, 76, 0.1);
-  }
-  .steps article > * { grid-column: 1; }
-  .steps article::before { grid-row: auto; }
   .steps article:last-of-type { border-bottom: 0; }
-
   ul.tiles { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-
   .tiles-3 > article { position: relative; }
   .tiles-3 h3 a::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; left: 0; }
   .tiles-3 > article:hover { box-shadow: 0 0.5rem 1.5rem rgba(0, 39, 76, 0.25); }
-
   .phase article { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 0 3rem; }
   .phase article > h3 { grid-column: 1; grid-row: 1 / span 6; align-self: start; position: sticky; top: 1.5rem; }
 /* Sticky headings created with help from UMGPT using the prompt,
@@ -705,7 +634,6 @@ address { font-style: normal; padding-top: 0.5rem; }
    UMGPT. (2026). UMGPT (GPT-5.6, November 22, 2026 version) [Large language model]. */
   .phase article > :not(h3) { grid-column: 2; margin-bottom: 1rem; }
   .phase article > :not(h3):last-child { margin-bottom: 0; }
-
   .phase > .phase-banner {
     grid-column: 1 / -1;
     width: 100%;
@@ -715,31 +643,9 @@ address { font-style: normal; padding-top: 0.5rem; }
     box-shadow: 0 0.75rem 2rem rgba(0, 39, 76, 0.25);
   }
 
-  main > section.phase article.wide {
-    grid-template-columns: 1fr;
-  }
+  main > section.phase article.wide { grid-template-columns: 1fr; }
   .phase article.wide > h3,
   .phase article.wide > :not(h3) {
-    grid-column: 1;
-    grid-row: auto;
-    position: static;
-    margin-bottom: 0;
-  }
-
-  .prep-phase { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
-  .prep-phase > h2, .prep-phase > p, .prep-phase > .phase-banner,
-  .prep-phase > article:not(.prep-card) { grid-column: 1 / -1; }
-  main > section.phase.prep-phase article.prep-card {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    padding: 1.5rem;
-    background: var(--gray);
-    border-top: 0.4rem solid var(--maize);
-    box-shadow: 0 0.25rem 1rem rgba(0, 39, 76, 0.1);
-  }
-  .prep-phase article.prep-card > h3,
-  .prep-phase article.prep-card > :not(h3) {
     grid-column: 1;
     grid-row: auto;
     position: static;
@@ -754,27 +660,10 @@ main > section.hero.not-found {
   align-items: center;
   gap: 2rem;
 }
-
-.not-found-content {
-  display: grid;
-  gap: 1.5rem;
-  align-content: center;
-}
-
-main > section.hero.not-found .not-found-content h2 {
-  color: var(--blue);
-}
-
-main > section.hero.not-found .not-found-content p {
-  color: var(--ink);
-  max-width: 65ch;
-}
-
-main > section.hero.not-found .not-found-content .button {
-  justify-self: start;
-  width: auto;
-}
-
+.not-found-content { display: grid; gap: 1.5rem; align-content: center; }
+main > section.hero.not-found .not-found-content h2 { color: var(--blue); }
+main > section.hero.not-found .not-found-content p { color: var(--ink); max-width: 65ch; }
+main > section.hero.not-found .not-found-content .button { justify-self: start; width: auto; }
 main > section.hero.not-found > .not-found-photo {
   grid-column: 1;
   grid-row: auto;
@@ -788,101 +677,23 @@ main > section.hero.not-found > .not-found-photo {
 }
 
 @media (min-width: 48rem) {
-  main > section.hero.not-found {
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-  }
-
-  main > section.hero.not-found > .not-found-photo {
-    grid-column: 2;
-    grid-row: 1;
-  }
+  main > section.hero.not-found { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  main > section.hero.not-found > .not-found-photo { grid-column: 2; grid-row: 1; }
 }
 
 @media (min-width: 64rem) {
-  main > section.hero.not-found {
-    grid-template-columns: 1fr 1.2fr;
-    gap: 3rem;
-  }
-}
-
-/*fixing footer for all view, I move it here so its easier for me*/
-
-footer {
-    padding-left: 0;
-    padding-right: 0;
-}
-
-.footer-links,
-.footer-contact {
-    padding-left: 4vw;
-    padding-right: 4vw;
-}
-
-.footer-copy {
-    grid-column: 1 / -1;
-    width: 100%;
-    box-sizing: border-box;
-    border-top: 1px solid rgba(255, 255, 255, 0.35);
-    padding: 1rem 4vw 0;
-}
-
-@media (min-width: 48rem) {
-    footer {
-        padding-left: 0;
-        padding-right: 0;
-    }
-
-    .footer-links,
-    .footer-contact {
-        padding-left: 5vw;
-        padding-right: 5vw;
-    }
-
-    .footer-copy {
-        padding-left: 5vw;
-        padding-right: 5vw;
-    }
+  main > section.hero.not-found { grid-template-columns: 1fr 1.2fr; gap: 3rem; }
 }
 
 /*404 layout new fixes*/
+main > section.hero.not-found .not-found-content .button { margin-top: 1.5rem; }
+main > aside { background: var(--blue); color: var(--paper); }
+main > aside h2 { color: var(--paper); }
+main > aside p { color: var(--paper); }
 
-main > section.hero.not-found {
-    background: var(--gray);
-    color: var(--ink);
-}
-
-main > section.hero.not-found .not-found-content h2 {
-    color: var(--blue);
-}
-
-main > section.hero.not-found .not-found-content p {
-    color: var(--ink);
-}
-
-main > section.hero.not-found .not-found-content .button {
-    margin-top: 1.5rem;
-}
-
-main > aside {
-    background: var(--blue);
-    color: var(--paper);
-}
-
-main > aside h2 {
-    color: var(--paper);
-}
-
-main > aside p {
-    color: var(--paper);
-}
-
-/* Note: this stylesheet is long (about 800 lines) because I built the
-  the view in stages and tested each layout change on every page as I went.
-   Some rules appear more than once (the .prep-card, .wide card, .not-found
-   hero, and footer styles) becausee I tried to fixed the current ones but it seems liek its not doing 
-   the fixes so I rewrite the code again so it will overrides the code I had previously. 
-   (which is my later fixes sit near the bottom. I kept those overrides in place
-   instead of merging them so I would not accidentally break a layout that was already
-   working) Merging the duplicates is something I would clean up in
-   a future revision if needed*/
+/* Note: My CSS is a bit long because I worked on the layouts in stages which I would make
+  changes and testing different screen sizes as I went.
+   Some of my css dont work so I added new rules at the bottom to fix them but then
+   I went back and cleaned up some of the repeated rules to follow the guide but 
+   I kept a few fixes separate because I dont want to accidentally break the layouts.
+*/
