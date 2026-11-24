@@ -172,6 +172,7 @@ main > section.hero { background: var(--blue); color: var(--paper); padding-top:
 .hero :focus-visible { outline-color: var(--paper); }
 main > section.hero .button:hover { background: var(--paper); color: var(--blue); }
 
+
 /* Cards */
 article {
   background: var(--paper);
@@ -695,5 +696,11 @@ main > aside p { color: var(--paper); }
   changes and testing different screen sizes as I went.
    Some of my css dont work so I added new rules at the bottom to fix them but then
    I went back and cleaned up some of the repeated rules to follow the guide but 
-   I kept a few fixes separate because I dont want to accidentally break the layouts.
+   I kept a few fixes separate because I dont want to accidentally break the layouts, I tried my best
 */
+
+/* Prompt: "I kept adding new rules at the bottom to override my previous code
+   because some of my layouts weren't working. I got a feed back saying 
+    I need to clean up better at least a bit and understanding how cascading works which I do agree with them. 
+    Take a look at my 404 here and and my cards since these are main issues. Can you please walk me through why are they breaking?"
+    UMGPT. (2026). UMGPT (GPT-5.6, November 22, 2026 version) [Large language model].
